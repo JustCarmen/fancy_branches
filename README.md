@@ -1,9 +1,7 @@
 Fancy Branches
 ====================
 
-Fancy Branches Module for webtrees.
-
-This module requires [webtrees 1.6.0](https://github.com/fisharebest/webtrees).
+Fancy Branches Module for webtrees. This module requires [webtrees 1.6.0](https://github.com/fisharebest/webtrees).
 
 Description
 -----------
