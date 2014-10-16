@@ -25,10 +25,32 @@ use WT\Auth;
 use WT\Log;
 
 class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Menu {
+	
+	public function __construct() {
+		parent::__construct();
+		// Load any local user translations
+		if (is_dir(WT_MODULES_DIR.$this->getName().'/language')) {
+			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.mo')) {
+				WT_I18N::addTranslation(
+					new Zend_Translate('gettext', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.mo', WT_LOCALE)
+				);
+			}
+			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.php')) {
+				WT_I18N::addTranslation(
+					new Zend_Translate('array', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.php', WT_LOCALE)
+				);
+			}
+			if (file_exists(WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.csv')) {
+				WT_I18N::addTranslation(
+					new Zend_Translate('csv', WT_MODULES_DIR.$this->getName().'/language/'.WT_LOCALE.'.csv', WT_LOCALE)
+				);
+			}
+		}
+	}
 
 	// Extend WT_Module
 	public function getTitle() {
-		return /* Name of a module (not translatable) */  'Fancy Branches';
+		return /* I18N: Name of a module */ WT_I18N::translate('Fancy Branches');
 	}
 
 	// Extend WT_Module
