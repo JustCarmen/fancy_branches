@@ -117,7 +117,7 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 
 				jQuery(jQuery("#branches-page ol").get().reverse()).each(function(){
 					var html = jQuery(this).html();
-					if (html == "") {
+					if (html === "") {
 						jQuery(this).remove();
 					}
 					else {
@@ -126,7 +126,7 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 				});
 				jQuery("#branches-page ul:first").attr("id", "branch-list");
 
-				jQuery("li[title='.WT_I18N::translate('Private').']").hide();
+				jQuery("li[title=\"'.WT_I18N::translate('Private').'\"]").hide();
 			');
 
 			if ($this->getSetting('FB')) {
