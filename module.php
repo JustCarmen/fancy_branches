@@ -86,6 +86,8 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 					<input type="submit" value="'.WT_I18N::translate('Save').'" />
 				</form>';
 			break;
+		default:
+			header('HTTP/1.0 404 Not Found');
 		}
 	}
 
