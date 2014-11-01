@@ -35,4 +35,4 @@ msgstr "Fancy Branches"
 
 #: modules_v3\fancy_branches/module.php:62
 msgid "Use “d’Aboville” numbering system"
-msgstr "Gebruik het “d’Aboville” nummeringsysteem."
+msgstr "Gebruik het “d’Aboville” nummeringsysteem"
