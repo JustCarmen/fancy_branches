@@ -115,7 +115,7 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 				->addInlineJavaScript('
 				jQuery("#branches-page form")
 					.after("<div id=\"treecontrol\"><a href=\"#\">'.WT_I18N::translate('Collapse all').'</a> | <a href=\"#\">'.WT_I18N::translate('Expand all').'</a></div>")
-					.after("<div class=\"loading-image\">&nbsp;</div>");
+					.after("<div class=\"loading-image\"></div>");
 
 				jQuery(jQuery("#branches-page ol").get().reverse()).each(function(){
 					var html = jQuery(this).html();
