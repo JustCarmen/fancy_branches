@@ -98,7 +98,10 @@ class fancy_branches_WT_Module extends WT_Module implements WT_Module_Config, WT
 							</div>
 						</div>
 					</div>
-					<button class="btn btn-primary" type="submit"><?php echo WT_I18N::translate('save'); ?></button>
+					<button class="btn btn-primary" type="submit">						
+						<i class="fa fa-check"></i>
+						<?php echo WT_I18N::translate('save'); ?>
+					</button>
 				</form>
 
 				<?php
