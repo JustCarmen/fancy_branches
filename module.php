@@ -100,7 +100,8 @@ class fancy_branches_WT_Module extends Module implements ModuleConfigInterface, 
 				<?php
 				break;
 			default:
-				header('HTTP/1.0 404 Not Found');
+				http_response_code(404);
+				break;
 		}
 	}
 
