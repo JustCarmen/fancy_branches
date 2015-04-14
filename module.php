@@ -68,7 +68,7 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 								<?php echo I18N::translate('Use “d’Aboville” numbering system'); ?>
 							</label>
 							<div class="col-sm-8">
-								<?php echo radio_buttons('NEW_FB', array(I18N::translate('no'), I18N::translate('yes')), $FB, 'class="radio-inline"'); ?>
+								<?php echo edit_field_yes_no('NEW_FB', $FB, 'class="radio-inline"'); ?>
 								<p class="small text-muted"><?php echo I18N::translate('The “D’aboville” numbering system is a method to split descending generations into numbering sections. Each generation and each child gets a succeeding number seperated by a dot.'); ?></p>
 							</div>
 						</div>
