@@ -14,6 +14,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#branches-page table {
+	margin: 0 auto;
+}
 
 #branches-page ul.aboville {
 	counter-reset: section;
