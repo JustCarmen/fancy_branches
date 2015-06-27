@@ -121,7 +121,7 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 						css.setAttribute("href", css_file);
 						html_doc.appendChild(css);
 					}
-					include_css("' . WT_MODULES_DIR . $this->getName() . '/style.css");
+					include_css("' . WT_MODULES_DIR . $this->getName() . '/css/style.css");
 					', BaseController::JS_PRIORITY_HIGH)
 				->addInlineJavaScript('
 				jQuery("#branches-page form")
