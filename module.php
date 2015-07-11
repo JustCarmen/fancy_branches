@@ -16,21 +16,25 @@
  */
 namespace JustCarmen\WebtreesAddOns\FancyBranches;
 
-use Fisharebest\Webtrees\Auth;
+use Composer\Autoload\ClassLoader;
 use Fisharebest\Webtrees\Controller\BaseController;
-use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
+use JustCarmen\WebtreesAddOns\FancyBranches\Template\AdminTemplate;
 
 class FancyBranchesModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface {
 
 	public function __construct() {
 		parent::__construct('fancy_branches');
+
+		// register the namespaces
+		$loader = new ClassLoader();
+		$loader->addPsr4('JustCarmen\\WebtreesAddOns\\FancyBranches\\', WT_MODULES_DIR . $this->getName() . '/src');
+		$loader->register();
 	}
 
 	// Extend Module
@@ -47,46 +51,12 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 	public function modAction($mod_action) {
 		switch ($mod_action) {
 			case 'admin_config':
-
-				$controller = new PageController;
-				$controller
-					->restrictAccess(Auth::isAdmin())
-					->setPageTitle(I18N::translate('Fancy Branches'))
-					->pageHeader();
-
 				if (Filter::postBool('save') && Filter::checkCsrf()) {
 					$this->setSetting('FB', Filter::postInteger('NEW_FB'));
 					Log::addConfigurationLog($this->getTitle() . ' config updated');
 				}
-
-				$FB = $this->getSetting('FB');
-				?>
-				<ol class="breadcrumb small">
-					<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-					<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
-					<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-				</ol>
-				<h2><?php echo $this->getTitle(); ?></h2>
-				<form method="post" name="form1">
-					<?php echo Filter::getCsrf(); ?>
-					<input type="hidden" name="save" value="1">
-					<div class="form-group">
-						<label class="control-label col-sm-4">
-							<?php echo I18N::translate('Use “d’Aboville” numbering system'); ?>
-						</label>
-						<div class="col-sm-8">
-							<?php echo FunctionsEdit::editFieldYesNo('NEW_FB', $FB, 'class="radio-inline"'); ?>
-							<p class="small text-muted"><?php echo I18N::translate('The “D’aboville” numbering system is a method to split descending generations into numbering sections. Each generation and each child gets a succeeding number seperated by a dot.'); ?></p>
-						</div>
-					</div>
-					<button class="btn btn-primary" type="submit">						
-						<i class="fa fa-check"></i>
-						<?php echo I18N::translate('save'); ?>
-					</button>
-				</form>
-
-				<?php
-				break;
+				$template = new AdminTemplate;
+				return $template->pageContent();
 			default:
 				http_response_code(404);
 				break;
