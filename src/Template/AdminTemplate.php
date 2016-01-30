@@ -43,26 +43,26 @@ class AdminTemplate extends FancyBranchesModule {
 		$FB = $this->getSetting('FB');
 		?>
 		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
-			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+			<li><a href="admin.php"><?php echo I18N::translate('Control panel') ?></a></li>
+			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration') ?></a></li>
+			<li class="active"><?php echo $controller->getPageTitle() ?></li>
 		</ol>
-		<h2><?php echo $this->getTitle(); ?></h2>
+		<h2><?php echo $this->getTitle() ?></h2>
 		<form method="post" name="form1">
-			<?php echo Filter::getCsrf(); ?>
+			<?php echo Filter::getCsrf() ?>
 			<input type="hidden" name="save" value="1">
 			<div class="form-group">
 				<label class="control-label col-sm-4">
-					<?php echo I18N::translate('Use “d’Aboville” numbering system'); ?>
+					<?php echo I18N::translate('Use “d’Aboville” numbering system') ?>
 				</label>
 				<div class="col-sm-8">
-					<?php echo FunctionsEdit::editFieldYesNo('NEW_FB', $FB, 'class="radio-inline"'); ?>
-					<p class="small text-muted"><?php echo I18N::translate('The “D’aboville” numbering system is a method to split descending generations into numbering sections. Each generation and each child gets a succeeding number seperated by a dot.'); ?></p>
+					<?php echo FunctionsEdit::editFieldYesNo('NEW_FB', $FB, 'class="radio-inline"') ?>
+					<p class="small text-muted"><?php echo I18N::translate('The “D’aboville” numbering system is a method to split descending generations into numbering sections. Each generation and each child gets a succeeding number seperated by a dot.') ?></p>
 				</div>
 			</div>
 			<button class="btn btn-primary" type="submit">						
 				<i class="fa fa-check"></i>
-				<?php echo I18N::translate('save'); ?>
+				<?php echo I18N::translate('save') ?>
 			</button>
 		</form>
 		<?php
