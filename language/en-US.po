@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Branches\n"
-"POT-Creation-Date: 2015-07-04 11:41+0200\n"
+"POT-Creation-Date: 2016-03-20 22:21+0100\n"
 "PO-Revision-Date: 2015-07-04 17:36+0200\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: \n"
@@ -14,28 +14,28 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
-#: module.php:128
+#: module.php:101
 msgid "Collapse all"
 msgstr "Collapse all"
 
-#: module.php:128
+#: module.php:101
 msgid "Expand all"
 msgstr "Expand all"
 
 #. I18N: Description of the module
-#: module.php:43
+#: module.php:50
 msgid "Expand or collapse branches in the webtrees branches list with a single click"
 msgstr "Expand or collapse branches in the webtrees branches list with a single click"
 
 #. I18N: Name of a module
-#: module.php:38 module.php:54
+#: module.php:44 src/Template/AdminTemplate.php:38
 msgid "Fancy Branches"
 msgstr "Fancy Branches"
 
-#: module.php:79
+#: src/Template/AdminTemplate.php:60
 msgid "The “D’aboville” numbering system is a method to split descending generations into numbering sections. Each generation and each child gets a succeeding number seperated by a dot."
 msgstr "The “D’aboville” numbering system is a method to split descending generations into numbering sections. Each generation and each child gets a succeeding number seperated by a dot."
 
-#: module.php:75
+#: src/Template/AdminTemplate.php:56
 msgid "Use “d’Aboville” numbering system"
 msgstr "Use “d’Aboville” numbering system"
