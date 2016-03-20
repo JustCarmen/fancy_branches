@@ -26,6 +26,8 @@ use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use JustCarmen\WebtreesAddOns\FancyBranches\Template\AdminTemplate;
 
+define('FB_VERSION', '1.7.4');
+
 class FancyBranchesModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface {
 
 	public function __construct() {
@@ -44,7 +46,8 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 
 	// Extend Module
 	public function getDescription() {
-		return /* I18N: Description of the module */ I18N::translate('Expand or collapse branches in the webtrees branches list with a single click');
+		return
+			/* I18N: Description of the module */ I18N::translate('Expand or collapse branches in the webtrees branches list with a single click') . '<br><span class="small text-muted">' . I18N::translate('Version') . ' ' . FB_VERSION . ' | by JustCarmen | <a href="http://www.justcarmen.nl/fancy-modules/fancy-branches/">' . I18N::translate('Show details') . '</a></span>';
 	}
 
 	// Extend ModuleConfigInterface
