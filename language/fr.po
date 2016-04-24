@@ -23,8 +23,8 @@ msgstr "Tout développer"
 
 #. I18N: Description of the module
 #: module.php:50
-msgid "Expand or collapse branches in the webtrees branches list with a single click"
-msgstr "Développer ou réduire les branches dans la liste des branches webtrees  d'un simple clic"
+msgid "Expand or collapse branches in the webtrees branches list with a single click."
+msgstr "Développer ou réduire les branches dans la liste des branches webtrees  d'un simple clic."
 
 #. I18N: Name of a module
 #: module.php:44 src/Template/AdminTemplate.php:38

@@ -47,7 +47,7 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 	// Extend Module
 	public function getDescription() {
 		return
-			/* I18N: Description of the module */ I18N::translate('Expand or collapse branches in the webtrees branches list with a single click') . '<br><span class="small text-muted">' . I18N::translate('Version') . ' ' . FB_VERSION . ' | by JustCarmen | <a href="http://www.justcarmen.nl/fancy-modules/fancy-branches/">' . I18N::translate('Show details') . '</a></span>';
+			/* I18N: Description of the module */ I18N::translate('Expand or collapse branches in the webtrees branches list with a single click.') . '<br><span class="small text-muted">' . I18N::translate('Version') . ' ' . FB_VERSION . ' | by JustCarmen | <a href="http://www.justcarmen.nl/fancy-modules/fancy-branches/">' . I18N::translate('Show details') . '</a></span>';
 	}
 
 	// Extend ModuleConfigInterface

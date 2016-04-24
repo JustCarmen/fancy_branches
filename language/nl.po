@@ -24,7 +24,7 @@ msgstr "Alles uitklappen"
 
 #. I18N: Description of the module
 #: module.php:50
-msgid "Expand or collapse branches in the webtrees branches list with a single click"
+msgid "Expand or collapse branches in the webtrees branches list with a single click."
 msgstr "Klap de takken in de webtrees lijst “Takken” met één klik in of uit."
 
 #. I18N: Name of a module
