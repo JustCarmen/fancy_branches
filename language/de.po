@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Branches\n"
 "POT-Creation-Date: 2016-03-20 22:21+0100\n"
-"PO-Revision-Date: 2016-04-24 15:18+0000\n"
-"Last-Translator: Martin Pannier <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2016-04-29 11:10+0000\n"
+"Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/justcarmen/fancy-branches/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -26,9 +26,8 @@ msgstr "Alle erweitern"
 
 #. I18N: Description of the module
 #: module.php:50
-#, fuzzy
 msgid "Expand or collapse branches in the webtrees branches list with a single click."
-msgstr "Erweitert und schließt Zweige in der Liste der Familienzweige mit einem Klick"
+msgstr "Erweitert und schließt Zweige in der Liste der Familienzweige mit einem Klick."
 
 #. I18N: Name of a module
 #: module.php:44 src/Template/AdminTemplate.php:38
