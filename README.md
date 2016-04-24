@@ -13,7 +13,11 @@ It also has an optional styling feature that can display numbering for each fami
 
 NOTE: It is not not recommended to use this add-on if you have large numbers (thousands) of individuals in a single branch of your family tree. In such cases activating the module could make page load very slow.
 
-Installation, updating and translations
+Translations
+------------
+You can help to translate this module. Updates to translations should be made at https://translate.webtrees.net/projects/justcarmen/. Changes made there will be pushed to the git repository periodically and will be available on the development version of the module. They will be included in the next release of this module.
+
+Installation & upgrading
 ---------------------------------------
 For more information about these subjects go to the JustCarmen help pages: http://www.justcarmen.nl/help
 
