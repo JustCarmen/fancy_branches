@@ -26,7 +26,8 @@ msgstr "Alle erweitern"
 
 #. I18N: Description of the module
 #: module.php:50
-msgid "Expand or collapse branches in the webtrees branches list with a single click"
+#, fuzzy
+msgid "Expand or collapse branches in the webtrees branches list with a single click."
 msgstr "Erweitert und schließt Zweige in der Liste der Familienzweige mit einem Klick"
 
 #. I18N: Name of a module
