@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use JustCarmen\WebtreesAddOns\FancyBranches\Template\AdminTemplate;
 
-define('FB_VERSION', '1.7.4');
+define('FB_VERSION', '1.7.5-dev');
 
 class FancyBranchesModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface {
 
@@ -35,7 +35,7 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 
 		// register the namespaces
 		$loader = new ClassLoader();
-		$loader->addPsr4('JustCarmen\\WebtreesAddOns\\FancyBranches\\', WT_MODULES_DIR . $this->getName() . '/src');
+		$loader->addPsr4('JustCarmen\\WebtreesAddOns\\FancyBranches\\', WT_MODULES_DIR . $this->getName() . '/app');
 		$loader->register();
 	}
 
