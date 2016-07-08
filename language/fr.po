@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-03-20 22:21+0100\n"
+"POT-Creation-Date: 2016-07-08 09:29+0200\n"
 "PO-Revision-Date: 2016-06-23 20:40+0000\n"
 "Last-Translator: Michael <mike_jpr@outlook.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/justcarmen/fancy-branches/fr/>\n"
@@ -13,28 +13,28 @@ msgstr ""
 "X-Generator: Weblate 2.5\n"
 "X-Poedit-Basepath: .\n"
 
-#: module.php:101
+#: module.php:102
 msgid "Collapse all"
 msgstr "Tout réduire"
 
-#: module.php:101
+#: module.php:102
 msgid "Expand all"
 msgstr "Tout développer"
 
 #. I18N: Description of the module
-#: module.php:50
+#: module.php:51
 msgid "Expand or collapse branches in the webtrees branches list with a single click."
 msgstr "Développer ou réduire les branches dans la liste des branches webtrees d'un simple clic."
 
 #. I18N: Name of a module
-#: module.php:44 src/Template/AdminTemplate.php:38
+#: app/Template/AdminTemplate.php:38 module.php:45
 msgid "Fancy Branches"
 msgstr "Fancy Branches"
 
-#: src/Template/AdminTemplate.php:60
+#: app/Template/AdminTemplate.php:60
 msgid "The “D’aboville” numbering system is a method to split descending generations into numbering sections. Each generation and each child gets a succeeding number seperated by a dot."
 msgstr "Le système de numérotation d'Aboville est une méthode de division décroissante des générations en plusieurs sections de numérotation. Chaque génération et chaque enfant reçoit un numéro d'ordre, séparé par un point."
 
-#: src/Template/AdminTemplate.php:56
+#: app/Template/AdminTemplate.php:56
 msgid "Use “d’Aboville” numbering system"
 msgstr "Utiliser le système de numérotation d’Aboville"
