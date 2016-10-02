@@ -27,10 +27,10 @@ use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use JustCarmen\WebtreesAddOns\FancyBranches\Template\AdminTemplate;
 
 class FancyBranchesModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface {
-	
-	const CUSTOM_VERSION = '1.7.7-dev';
-	const CUSTOM_WEBSITE = 'http://www.justcarmen.nl/fancy-modules/fancy-branches/';
-	
+
+	const CUSTOM_VERSION	 = '1.7.8';
+	const CUSTOM_WEBSITE	 = 'http://www.justcarmen.nl/fancy-modules/fancy-branches/';
+
 	public function __construct() {
 		parent::__construct('fancy_branches');
 
