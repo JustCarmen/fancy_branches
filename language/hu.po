@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fancy Branches\n"
 "POT-Creation-Date: 2016-07-08 09:29+0200\n"
-"PO-Revision-Date: 2015-07-04 11:41+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2016-12-09 20:30+0000\n"
+"Last-Translator: Gyönyör János <gyj@centrum.sk>\n"
+"Language-Team: Hungarian <https://translate.webtrees.net/projects/justcarmen/fancy-branches/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Weblate 2.8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -18,26 +18,26 @@ msgstr ""
 
 #: module.php:102
 msgid "Collapse all"
-msgstr ""
+msgstr "Mindet összecsuk"
 
 #: module.php:102
 msgid "Expand all"
-msgstr ""
+msgstr "Mindent kibont"
 
 #. I18N: Description of the module
 #: module.php:51
 msgid "Expand or collapse branches in the webtrees branches list with a single click."
-msgstr ""
+msgstr "Az ágazatok egy-kattintásos kibontása vagy bezárása a webtrees ágazatok felsorolásban."
 
 #. I18N: Name of a module
 #: app/Template/AdminTemplate.php:38 module.php:45
 msgid "Fancy Branches"
-msgstr ""
+msgstr "Fancy Ágazatok"
 
 #: app/Template/AdminTemplate.php:60
 msgid "The “D’aboville” numbering system is a method to split descending generations into numbering sections. Each generation and each child gets a succeeding number seperated by a dot."
-msgstr ""
+msgstr "A “D’aboville” számozási rendszer olyan módszer, amely leszármazott nemzedékek szerint szakaszosított számsorrendbe kapcsolja össze. Nemzedékenként ponttal elválasztva és gyermekenként számozva egy egyedi sorszám jön létre."
 
 #: app/Template/AdminTemplate.php:56
 msgid "Use “d’Aboville” numbering system"
-msgstr ""
+msgstr "A “d’Aboville” számozás használása"
