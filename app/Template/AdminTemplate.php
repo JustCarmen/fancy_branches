@@ -16,6 +16,7 @@
 namespace JustCarmen\WebtreesAddOns\FancyBranches\Template;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Bootstrap4;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
@@ -34,28 +35,29 @@ class AdminTemplate extends FancyBranchesModule {
 	private function pageHeader(PageController $controller) {
 		$controller
 			->restrictAccess(Auth::isAdmin())
-			->setPageTitle(I18N::translate('Fancy Branches'))
+			->setPageTitle($this->getTitle())
 			->pageHeader();
 	}
 
 	private function pageBody(PageController $controller) {
-		$FB = $this->getSetting('FB');
+
+		echo Bootstrap4::breadcrumbs([
+			'admin.php'			 => I18N::translate('Control panel'),
+			'admin_modules.php'	 => I18N::translate('Module administration'),
+			], $controller->getPageTitle());
 		?>
-		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?= I18N::translate('Control panel') ?></a></li>
-			<li><a href="admin_modules.php"><?= I18N::translate('Module administration') ?></a></li>
-			<li class="active"><?= $controller->getPageTitle() ?></li>
-		</ol>
-		<h2><?= $this->getTitle() ?></h2>
+
+		<h1><?= $controller->getPageTitle() ?></h1>
 		<form method="post" name="form1">
 			<?= Filter::getCsrf() ?>
 			<input type="hidden" name="save" value="1">
-			<div class="form-group">
-				<label class="control-label col-sm-4">
+			<div class="row form-group">
+				<label class="col-sm-4">
 					<?= I18N::translate('Use “d’Aboville” numbering system') ?>
 				</label>
 				<div class="col-sm-8">
-					<?= FunctionsEdit::editFieldYesNo('NEW_FB', $FB, 'class="radio-inline"') ?>
+					<?php $FB = $this->getPreference('FB'); ?>
+					<?= Bootstrap4::radioButtons('NEW_FB', FunctionsEdit::optionsNoYes(), $FB, true) ?>
 					<p class="small text-muted"><?= I18N::translate('The “D’aboville” numbering system is a method to split descending generations into numbering sections. Each generation and each child gets a succeeding number seperated by a dot.') ?></p>
 				</div>
 			</div>

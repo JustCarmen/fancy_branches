@@ -55,7 +55,7 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 		switch ($mod_action) {
 			case 'admin_config':
 				if (Filter::postBool('save') && Filter::checkCsrf()) {
-					$this->setSetting('FB', Filter::postInteger('NEW_FB'));
+					$this->setPreference('FB', Filter::postInteger('NEW_FB'));
 					Log::addConfigurationLog($this->getTitle() . ' config updated');
 				}
 				$template = new AdminTemplate;
@@ -81,8 +81,8 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 		// We don't actually have a menu - this is just a convenient "hook" to execute code at the right time during page execution
 		global $controller;
 
-		if (WT_SCRIPT_NAME == 'branches.php') {
-
+		if (WT_SCRIPT_NAME == 'branches.php' && Filter::get('surname') !== "") {
+			echo '<style>.wt-main-container > ol, .wt-main-container > ul {display: none}</style>';
 			$controller
 				->addExternalJavaScript(WT_MODULES_DIR . $this->getName() . '/js/jquery.treeview.js')
 				->addInlineJavaScript('
@@ -95,7 +95,10 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 						html_doc.appendChild(css);
 					}
 					include_css("' . WT_MODULES_DIR . $this->getName() . '/css/style.css");
+
+					jQuery(".wt-main-container").attr("id", "branches-page");
 					', BaseController::JS_PRIORITY_HIGH)
+
 				->addInlineJavaScript('
 				jQuery("#branches-page form")
 					.after("<div id=\"treecontrol\"><a href=\"#\">' . I18N::translate('Collapse all') . '</a> | <a href=\"#\">' . I18N::translate('Expand all') . '</a></div>")
@@ -115,7 +118,7 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 					jQuery("li[title=\"' . I18N::translate('Private') . '\"]").hide();
 				');
 
-			if ($this->getSetting('FB')) {
+			if ($this->getPreference('FB')) {
 				$controller->addInlineJavaScript('
 					jQuery("#branch-list, #branch-list ul, #branch-list li").addClass("aboville");
 				');
@@ -127,8 +130,8 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 					animated: "slow",
 					control:"#treecontrol"
 				});
-				jQuery("#branch-list").css("visibility", "visible");
-				jQuery(".loading-image").css("display", "none");
+				jQuery("#branch-list").show();
+				jQuery(".loading-image").hide();
 			');
 		}
 		return null;

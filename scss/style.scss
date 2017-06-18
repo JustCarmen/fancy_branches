@@ -1,0 +1,68 @@
+/*!
+* webtrees: online genealogy
+* Copyright (C) 2017 JustCarmen (http://www.justcarmen.nl)
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+@import "../../.fancy_base/scss/variables";
+@import "../../.fancy_base/scss/mixins";
+
+// Fancy Branches
+%list {
+	list-style: none;
+}
+
+#treecontrol {
+	border-bottom: $table-border;
+	margin-top: 2rem;
+	text-align: right;
+}
+
+.treeview {
+	margin: 40px;
+	@extend %list;
+	ul {
+		@include pm-0;
+		@extend %list;
+	}
+	li {
+		padding: 8px 30px;
+	}
+
+	.hitarea {
+		cursor: pointer;
+		display: inline;
+		margin-right: .5rem;
+		margin-left: -1.5rem;
+		&:after {
+			@include fontawesome;
+		}
+	}
+
+	.expandable-hitarea:after {
+		content: $chevron-circle-right;
+	}
+
+	.collapsable-hitarea:after {
+		content: $chevron-circle-down;
+	}
+
+	@at-root ul.aboville {
+		counter-reset: section;
+		li.aboville {
+			counter-increment: section;
+			&:before {
+				content: counters(section, ".") ". ";
+			}
+		}
+	}
+}
