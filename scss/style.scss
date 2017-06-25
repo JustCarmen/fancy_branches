@@ -15,12 +15,9 @@
 
 @import "../../.fancy_base/scss/variables";
 @import "../../.fancy_base/scss/mixins";
+@import "../../.fancy_base/scss/placeholders";
 
 // Fancy Branches
-%list {
-	list-style: none;
-}
-
 #treecontrol {
 	border-bottom: $table-border;
 	margin-top: 2rem;
@@ -31,7 +28,7 @@
 	margin: 40px;
 	@extend %list;
 	ul {
-		@include pm-0;
+		@extend %pm-0;
 		@extend %list;
 	}
 	li {
