@@ -43,17 +43,14 @@
 		display: inline;
 		margin-right: .5rem;
 		margin-left: -1.5rem;
-		&:after {
-			@include fontawesome;
-		}
 	}
 
 	.expandable-hitarea:after {
-		content: $chevron-circle-right;
+		@include jc-icon($chevron-circle-right);
 	}
 
 	.collapsable-hitarea:after {
-		content: $chevron-circle-down;
+		@include jc-icon($chevron-circle-down);
 	}
 
 	@at-root ul.aboville {
