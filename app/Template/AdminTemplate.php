@@ -25,48 +25,48 @@ use JustCarmen\WebtreesAddOns\FancyBranches\FancyBranchesModule;
 
 class AdminTemplate extends FancyBranchesModule {
 
-	protected function pageContent() {
-		$controller = new PageController;
-		return
-			$this->pageHeader($controller) .
-			$this->pageBody($controller);
-	}
+  protected function pageContent() {
+    $controller = new PageController;
+    return
+        $this->pageHeader($controller) .
+        $this->pageBody($controller);
+  }
 
-	private function pageHeader(PageController $controller) {
-		$controller
-			->restrictAccess(Auth::isAdmin())
-			->setPageTitle($this->getTitle())
-			->pageHeader();
-	}
+  private function pageHeader(PageController $controller) {
+    $controller
+        ->restrictAccess(Auth::isAdmin())
+        ->setPageTitle($this->getTitle())
+        ->pageHeader();
+  }
 
-	private function pageBody(PageController $controller) {
+  private function pageBody(PageController $controller) {
 
-		echo Bootstrap4::breadcrumbs([
-			'admin.php'			 => I18N::translate('Control panel'),
-			'admin_modules.php'	 => I18N::translate('Module administration'),
-			], $controller->getPageTitle());
-		?>
+    echo Bootstrap4::breadcrumbs([
+        'admin.php'         => I18N::translate('Control panel'),
+        'admin_modules.php' => I18N::translate('Module administration'),
+        ], $controller->getPageTitle());
+    ?>
 
-		<h1><?= $controller->getPageTitle() ?></h1>
-		<form method="post" name="form1">
-			<?= Filter::getCsrf() ?>
-			<input type="hidden" name="save" value="1">
-			<div class="row form-group">
-				<label class="col-sm-4">
-					<?= I18N::translate('Use “d’Aboville” numbering system') ?>
-				</label>
-				<div class="col-sm-8">
-					<?php $FB = $this->getPreference('FB'); ?>
-					<?= Bootstrap4::radioButtons('NEW_FB', FunctionsEdit::optionsNoYes(), $FB, true) ?>
-					<p class="small text-muted"><?= I18N::translate('The “D’aboville” numbering system is a method to split descending generations into numbering sections. Each generation and each child gets a succeeding number seperated by a dot.') ?></p>
-				</div>
-			</div>
-			<button class="btn btn-primary" type="submit">						
-				<i class="fa fa-check"></i>
-				<?= I18N::translate('save') ?>
-			</button>
-		</form>
-		<?php
-	}
+    <h1><?= $controller->getPageTitle() ?></h1>
+    <form method="post" name="form1">
+      <?= Filter::getCsrf() ?>
+      <input type="hidden" name="save" value="1">
+      <div class="row form-group">
+        <label class="col-sm-4">
+          <?= I18N::translate('Use “d’Aboville” numbering system') ?>
+        </label>
+        <div class="col-sm-8">
+          <?php $FB = $this->getPreference('FB'); ?>
+          <?= Bootstrap4::radioButtons('NEW_FB', FunctionsEdit::optionsNoYes(), $FB, true) ?>
+          <p class="small text-muted"><?= I18N::translate('The “D’aboville” numbering system is a method to split descending generations into numbering sections. Each generation and each child gets a succeeding number seperated by a dot.') ?></p>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">
+        <i class="fa fa-check"></i>
+        <?= I18N::translate('save') ?>
+      </button>
+    </form>
+    <?php
+  }
 
 }
