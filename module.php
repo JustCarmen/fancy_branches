@@ -16,13 +16,13 @@
 namespace JustCarmen\WebtreesAddOns\FancyBranches;
 
 use Composer\Autoload\ClassLoader;
-use Fisharebest\Webtrees\Controller\BaseController;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
+use Fisharebest\Webtrees\Theme;
 use JustCarmen\WebtreesAddOns\FancyBranches\Template\AdminTemplate;
 
 class FancyBranchesModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface {
@@ -30,8 +30,13 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 	const CUSTOM_VERSION	 = '1.7.11';
 	const CUSTOM_WEBSITE	 = 'http://www.justcarmen.nl/fancy-modules/fancy-branches/';
 
+	/** @var string location of the fancy treeview module files */
+	var $directory;
+
 	public function __construct() {
 		parent::__construct('fancy_branches');
+
+		$this->directory = WT_STATIC_URL . WT_MODULES_DIR . $this->getName();
 
 		// register the namespaces
 		$loader = new ClassLoader();
@@ -81,30 +86,18 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 		// We don't actually have a menu - this is just a convenient "hook" to execute code at the right time during page execution
 		global $controller;
 
-		if (WT_SCRIPT_NAME == 'branches.php' && Filter::get('surname') !== "") {
-			echo '<style>.wt-main-container > ol, .wt-main-container > ul {display: none}</style>';
+		if (WT_SCRIPT_NAME === 'branches.php' && Filter::get('surname') !== "") {
+
+			echo $this->includeCss();
+
 			$controller
-				->addExternalJavaScript(WT_MODULES_DIR . $this->getName() . '/js/jquery.treeview.js')
+				->addExternalJavaScript($this->directory . '/js/jquery.treeview.js')
 				->addInlineJavaScript('
-					function include_css(css_file) {
-						var html_doc = document.getElementsByTagName("head")[0];
-						var css = document.createElement("link");
-						css.setAttribute("rel", "stylesheet");
-						css.setAttribute("type", "text/css");
-						css.setAttribute("href", css_file);
-						html_doc.appendChild(css);
-					}
-					include_css("' . WT_MODULES_DIR . $this->getName() . '/css/style.css");
+					jQuery(".wt-main-container form")
+						.after("<div id=\"treecontrol\"><a href=\"#\">' . I18N::translate('Collapse all') . '</a> | <a href=\"#\">' . I18N::translate('Expand all') . '</a></div>")
+						.after("<div class=\"loading-image\"></div>");
 
-					jQuery(".wt-main-container").attr("id", "branches-page");
-					', BaseController::JS_PRIORITY_HIGH)
-
-				->addInlineJavaScript('
-				jQuery("#branches-page form")
-					.after("<div id=\"treecontrol\"><a href=\"#\">' . I18N::translate('Collapse all') . '</a> | <a href=\"#\">' . I18N::translate('Expand all') . '</a></div>")
-					.after("<div class=\"loading-image\"></div>");
-
-					jQuery(jQuery("#branches-page ol").get().reverse()).each(function(){
+					jQuery(jQuery(".wt-main-container ol").get().reverse()).each(function(){
 						var html = jQuery(this).html();
 						if (html === "") {
 							jQuery(this).remove();
@@ -113,7 +106,7 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 							jQuery(this).replaceWith("<ul>" + html +"</ul>")
 						}
 					});
-					jQuery("#branches-page ul:first").attr("id", "branch-list");
+					jQuery(".wt-main-container ul:first").attr("id", "branch-list");
 
 					jQuery("li[title=\"' . I18N::translate('Private') . '\"]").hide();
 				');
@@ -135,6 +128,34 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 			');
 		}
 		return null;
+	}
+
+	 /**
+	 * Default Fancy script used in all Fancy modules with css
+	 *
+	 * Use plain javascript to include the stylesheet(s) in the header and set the theme class on the body
+	 * Use a theme class on the body to simply reference it by css
+	 *
+	 * The code to place the stylesheet in the header renders quicker than the default webtrees solution
+	 * because we do not have to wait until the page is fully loaded
+	 *
+	 * Replace all classnames on the body to prevent double theme classes set by multiple fancy modules
+	 *
+	 * @return javascript
+	 */
+	protected function includeCss() {
+		return
+			'<script>
+				var newSheet=document.createElement("link");
+				newSheet.setAttribute("rel","stylesheet");
+				newSheet.setAttribute("type","text/css");
+				newSheet.setAttribute("href","' . $this->directory . '/css/style.css");
+				document.getElementsByTagName("head")[0].appendChild(newSheet);
+
+				window.addEventListener("load", function () {
+						document.body.className = "wt-global theme-' . Theme::theme()->themeId() . '";
+				}, false);
+			</script>';
 	}
 
 }

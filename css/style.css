@@ -21,6 +21,10 @@
 	counter-reset: section;
 }
 
+.wt-main-container > ol, .wt-main-container > ul {
+  display: none;
+}
+
 #treecontrol {
   border-bottom: 1px solid #ddd;
   margin-top: 2rem;

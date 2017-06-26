@@ -17,7 +17,13 @@
 @import "../../.fancy_base/scss/mixins";
 @import "../../.fancy_base/scss/placeholders";
 
-// Fancy Branches
+// Fancy Branches - branch list page
+.wt-main-container {
+	> ol, > ul {			// at this time our branches page doesn't have any custom id's and classes
+		display: none;	// page will be shown after jQuery code has been executed.
+	}
+}
+
 #treecontrol {
 	border-bottom: $table-border;
 	margin-top: 2rem;
