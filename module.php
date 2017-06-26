@@ -93,38 +93,38 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
       $controller
           ->addExternalJavaScript($this->directory . '/js/jquery.treeview.js')
           ->addInlineJavaScript('
-					jQuery(".wt-main-container form")
+					$(".wt-main-container form")
 						.after("<div id=\"treecontrol\"><a href=\"#\">' . I18N::translate('Collapse all') . '</a> | <a href=\"#\">' . I18N::translate('Expand all') . '</a></div>")
 						.after("<div class=\"loading-image\"></div>");
 
-					jQuery(jQuery(".wt-main-container ol").get().reverse()).each(function(){
-						var html = jQuery(this).html();
+					$($(".wt-main-container ol").get().reverse()).each(function(){
+						var html = $(this).html();
 						if (html === "") {
-							jQuery(this).remove();
+							$(this).remove();
 						}
 						else {
-							jQuery(this).replaceWith("<ul>" + html +"</ul>")
+							$(this).replaceWith("<ul>" + html +"</ul>")
 						}
 					});
-					jQuery(".wt-main-container ul:first").attr("id", "branch-list");
+					$(".wt-main-container ul:first").attr("id", "branch-list");
 
-					jQuery("li[title=\"' . I18N::translate('Private') . '\"]").hide();
+					$("li[title=\"' . I18N::translate('Private') . '\"]").hide();
 				');
 
       if ($this->getPreference('FB')) {
         $controller->addInlineJavaScript('
-					jQuery("#branch-list, #branch-list ul, #branch-list li").addClass("aboville");
+					$("#branch-list, #branch-list ul, #branch-list li").addClass("aboville");
 				');
       }
 
       $controller->addInlineJavaScript('
-				jQuery("#branch-list").treeview({
+				$("#branch-list").treeview({
 					collapsed: true,
 					animated: "slow",
 					control:"#treecontrol"
 				});
-				jQuery("#branch-list").show();
-				jQuery(".loading-image").hide();
+				$("#branch-list").show();
+				$(".loading-image").hide();
 			');
     }
     return null;
