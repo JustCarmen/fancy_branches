@@ -21,6 +21,8 @@
 	counter-reset: section;
 }
 
+/*at this time our branches page doesn't have any custom id's and classes
+page will be shown after jQuery code has been executed.*/
 .wt-main-container > ol, .wt-main-container > ul {
   display: none;
 }
@@ -42,6 +44,9 @@
   display: inline;
   margin-right: .5rem;
   margin-left: -1.5rem;
+}
+.treeview .hitarea.aboville-hitarea {
+  margin-left: 0;
 }
 .treeview .expandable-hitarea:after {
   font-family: "FontAwesome";

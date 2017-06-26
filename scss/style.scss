@@ -49,6 +49,10 @@ page will be shown after jQuery code has been executed.*/
     display: inline;
     margin-right: .5rem;
     margin-left: -1.5rem;
+
+    &.aboville-hitarea {
+      margin-left: 0;
+    }
   }
 
   .expandable-hitarea:after {
