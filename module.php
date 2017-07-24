@@ -36,7 +36,7 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
   public function __construct() {
     parent::__construct('fancy_branches');
 
-    $this->directory = WT_STATIC_URL . WT_MODULES_DIR . $this->getName();
+    $this->directory = WT_MODULES_DIR . $this->getName();
 
     // register the namespaces
     $loader = new ClassLoader();
