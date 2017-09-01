@@ -1,3 +1,19 @@
+/*
+ * Treeview 1.5pre - jQuery plugin to hide and show branches of a tree
+ * 
+ * http://bassistance.de/jquery-plugins/jquery-plugin-treeview/
+ * http://docs.jquery.com/Plugins/Treeview
+ *
+ * Copyright (c) 2007 Jörn Zaefferer
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ *
+ * Revision: $Id: jquery.treeview.js 5759 2008-07-01 07:50:28Z joern.zaefferer $
+ *
+ */
+
 ;(function($) {
 
 	// TODO rewrite as a widget, removing all the extra plugins
