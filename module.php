@@ -27,7 +27,7 @@ use JustCarmen\WebtreesAddOns\FancyBranches\Template\AdminTemplate;
 
 class FancyBranchesModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface {
 
-  const CUSTOM_VERSION = '1.8.0-dev';
+  const CUSTOM_VERSION = '2.0.0-dev';
   const CUSTOM_WEBSITE = 'http://www.justcarmen.nl/fancy-modules/fancy-branches/';
 
   /** @var string location of the fancy treeview module files */
