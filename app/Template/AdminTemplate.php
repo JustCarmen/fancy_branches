@@ -24,28 +24,25 @@ use Fisharebest\Webtrees\I18N;
 use JustCarmen\WebtreesAddOns\FancyBranches\FancyBranchesModule;
 
 class AdminTemplate extends FancyBranchesModule {
+	protected function pageContent() {
+		$controller = new PageController;
+		return
+		$this->pageHeader($controller) .
+		$this->pageBody($controller);
+	}
 
-  protected function pageContent() {
-    $controller = new PageController;
-    return
-        $this->pageHeader($controller) .
-        $this->pageBody($controller);
-  }
+	private function pageHeader(PageController $controller) {
+		$controller
+		->restrictAccess(Auth::isAdmin())
+		->setPageTitle($this->getTitle())
+		->pageHeader();
+	}
 
-  private function pageHeader(PageController $controller) {
-    $controller
-        ->restrictAccess(Auth::isAdmin())
-        ->setPageTitle($this->getTitle())
-        ->pageHeader();
-  }
-
-  private function pageBody(PageController $controller) {
-
-    echo Bootstrap4::breadcrumbs([
-        'admin.php'         => I18N::translate('Control panel'),
-        'admin_modules.php' => I18N::translate('Module administration'),
-        ], $controller->getPageTitle());
-    ?>
+	private function pageBody(PageController $controller) {
+		echo Bootstrap4::breadcrumbs([
+		'admin.php'         => I18N::translate('Control panel'),
+		'admin_modules.php' => I18N::translate('Module administration'),
+		], $controller->getPageTitle()); ?>
 
     <h1><?= $controller->getPageTitle() ?></h1>
     <form method="post" name="form1">
@@ -67,6 +64,5 @@ class AdminTemplate extends FancyBranchesModule {
       </button>
     </form>
     <?php
-  }
-
+	}
 }
