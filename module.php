@@ -92,8 +92,8 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 			echo $this->includeCss();
 
 			$controller
-		  ->addExternalJavaScript($this->directory . '/js/jquery.treeview.js')
-		  ->addInlineJavaScript('
+				->addExternalJavaScript($this->directory . '/assets/js/page.js')
+				->addInlineJavaScript('
 					$(".wt-main-container form")
 						.after("<div id=\"treecontrol\"><a href=\"#\">' . I18N::translate('Collapse all') . '</a> | <a href=\"#\">' . I18N::translate('Expand all') . '</a></div>")
 						.after("<div class=\"loading-image\"></div>");
@@ -145,7 +145,7 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
           var newSheet=document.createElement("link");
           newSheet.setAttribute("rel","stylesheet");
           newSheet.setAttribute("type","text/css");
-          newSheet.setAttribute("href","' . $this->directory . '/css/style.css");
+          newSheet.setAttribute("href","' . $this->directory . '/assets/css/style.css");
           document.getElementsByTagName("head")[0].appendChild(newSheet);
         </script>';
 	}
