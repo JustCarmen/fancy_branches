@@ -40,11 +40,9 @@ class AdminTemplate extends FancyBranchesModule {
 
 	private function pageBody(PageController $controller) {
 		echo Bootstrap4::breadcrumbs([
-			route('admin-control-panel')                                      => I18N::translate('Control panel'),
-			route('admin-modules')                                            => I18N::translate('Module administration'),
-			'module.php?mod=' . $this->getName() . '&mod_action=admin_config' => $this->getTitle(),
+			route('admin-control-panel') => I18N::translate('Control panel'),
+			route('admin-modules')       => I18N::translate('Module administration'),
 		], $controller->getPageTitle()); ?>
-
 		<h1><?= $controller->getPageTitle() ?></h1>
 		<form method="post" name="form1">
 		  <?= Filter::getCsrf() ?>
