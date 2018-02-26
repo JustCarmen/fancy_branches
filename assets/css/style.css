@@ -13,12 +13,13 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#branches-page table {
-	margin: 0 auto;
+.treeview ul {
+  padding: 0;
+  margin: 0;
 }
 
-#branches-page ul.aboville {
-	counter-reset: section;
+.treeview, .treeview ul {
+  list-style-type: none;
 }
 
 /*at this time our branches page doesn't have any custom id's and classes
@@ -28,7 +29,7 @@ page will be shown after jQuery code has been executed.*/
 }
 
 #treecontrol {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #dee2e6;
   margin-top: 2rem;
   text-align: right;
 }
@@ -36,34 +37,41 @@ page will be shown after jQuery code has been executed.*/
 .treeview {
   margin: 40px;
 }
+
 .treeview li {
   padding: 8px 30px;
 }
+
 .treeview .hitarea {
   cursor: pointer;
   display: inline;
   margin-right: .5rem;
   margin-left: -1.5rem;
 }
+
 .treeview .hitarea.aboville-hitarea {
   margin-left: 0;
 }
+
 .treeview .expandable-hitarea:after {
   font-family: "FontAwesome";
   content: "\f138";
 }
+
 .treeview .collapsable-hitarea:after {
   font-family: "FontAwesome";
   content: "\f13a";
 }
+
 ul.aboville {
   counter-reset: section;
 }
+
 ul.aboville li.aboville {
   counter-increment: section;
 }
-ul.aboville li.aboville:before {
-  content: counters(section,".") ". ";
-}
 
+ul.aboville li.aboville:before {
+  content: counters(section, ".") ". ";
+}
 /*# sourceMappingURL=style.css.map */
