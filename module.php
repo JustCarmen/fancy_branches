@@ -88,7 +88,7 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 		// We don't actually have a menu - this is just a convenient "hook" to execute code at the right time during page execution
 		global $controller;
 
-		if (WT_SCRIPT_NAME === 'branches.php' && Filter::get('surname') !== "") {
+		if (Filter::get('route') === 'branches' && Filter::get('surname') !== "") {
 			echo $this->includeCss();
 
 			$controller
