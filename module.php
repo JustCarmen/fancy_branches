@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
+use Fisharebest\Webtrees\Tree;
 use JustCarmen\WebtreesAddOns\FancyBranches\Template\AdminTemplate;
 
 class FancyBranchesModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface {
@@ -84,7 +85,7 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 	}
 
 	// Implement ModuleMenuInterface
-	public function getMenu() {
+	public function getMenu(Tree $tree) {
 		// We don't actually have a menu - this is just a convenient "hook" to execute code at the right time during page execution
 		global $controller;
 
