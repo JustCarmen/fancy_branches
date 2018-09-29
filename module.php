@@ -73,9 +73,9 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 
 	/** {@inheritdoc} */
 	public function getConfigLink(): string {
-		return Html::url('module.php', [
-			'mod'        => $this->getName(),
-			'mod_action' => 'admin_config',
+		return route('module', [
+			'module' => $this->getName(),
+			'action' => 'Admin',
 		]);
 	}
 
