@@ -17,7 +17,6 @@ namespace JustCarmen\WebtreesAddOns\FancyBranches;
 
 use Composer\Autoload\ClassLoader;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Module\AbstractModule;
@@ -38,37 +37,21 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 
 		$this->directory = WT_MODULES_DIR . $this->getName();
 
-		// register the namespaces
+		// register the namespaces - is this neccessary since we don't have an extra class in this module?
 		$loader = new ClassLoader();
 		$loader->addPsr4('JustCarmen\\WebtreesAddOns\\FancyBranches\\', WT_MODULES_DIR . $this->getName() . '/app');
 		$loader->register();
 	}
 
-	// Extend Module
+	/** {@inheritdoc} */
 	public function getTitle(): string {
 		return /* I18N: Name of a module */ I18N::translate('Fancy Branches');
 	}
 
-	// Extend Module
+	/** {@inheritdoc} */
 	public function getDescription(): string {
-		return
-		/* I18N: Description of the module */ I18N::translate('Expand or collapse branches in the webtrees branches list with a single click.');
-	}
-
-	// Extend ModuleConfigInterface
-	public function modAction($mod_action) {
-		switch ($mod_action) {
-	  case 'admin_config':
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			$this->setPreference('FB', Filter::postInteger('NEW_FB'));
-			Log::addConfigurationLog($this->getTitle() . ' config updated');
-		}
-		$template = new AdminTemplate;
-		return $template->pageContent();
-	  default:
-		http_response_code(404);
-		break;
-	}
+		/* I18N: Description of the module */ 
+		return I18N::translate('Expand or collapse branches in the webtrees branches list with a single click.');
 	}
 
 	/** {@inheritdoc} */
@@ -79,12 +62,12 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 		]);
 	}
 
-	// Implement ModuleMenuInterface
+	/** {@inheritdoc} */
 	public function defaultMenuOrder(): int {
 		return 999;
 	}
 
-	// Implement ModuleMenuInterface
+	/** {@inheritdoc} */
 	public function getMenu(Tree $tree) {
 		// We don't actually have a menu - this is just a convenient "hook" to execute code at the right time during page execution
 		global $controller;
@@ -130,6 +113,22 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 			');
 		}
 		return null;
+	}
+
+	// Extend ModuleConfigInterface
+	public function modAction($mod_action) {
+		switch ($mod_action) {
+	  case 'admin_config':
+		if (Filter::postBool('save') && Filter::checkCsrf()) {
+			$this->setPreference('FB', Filter::postInteger('NEW_FB'));
+			Log::addConfigurationLog($this->getTitle() . ' config updated');
+		}
+		$template = new AdminTemplate;
+		return $template->pageContent();
+	  default:
+		http_response_code(404);
+		break;
+	}
 	}
 
 	/**
