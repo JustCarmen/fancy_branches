@@ -15,32 +15,21 @@
  */
 namespace JustCarmen\WebtreesAddOns\FancyBranches;
 
-use Composer\Autoload\ClassLoader;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Tree;
-use JustCarmen\WebtreesAddOns\FancyBranches\Template\AdminTemplate;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class FancyBranchesModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface {
 	const CUSTOM_VERSION = '2.0.0-dev';
 	const CUSTOM_WEBSITE = 'http://www.justcarmen.nl/fancy-modules/fancy-branches/';
 
-	/** @var string location of the fancy treeview module files */
-	public $directory;
-
 	public function __construct() {
 		parent::__construct('fancy_branches');
-
-		$this->directory = WT_MODULES_DIR . $this->getName();
-
-		// register the namespaces - is this neccessary since we don't have an extra class in this module?
-		$loader = new ClassLoader();
-		$loader->addPsr4('JustCarmen\\WebtreesAddOns\\FancyBranches\\', WT_MODULES_DIR . $this->getName() . '/app');
-		$loader->register();
 	}
 
 	/** {@inheritdoc} */
@@ -115,20 +104,26 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 		return null;
 	}
 
-	// Extend ModuleConfigInterface
-	public function modAction($mod_action) {
-		switch ($mod_action) {
-	  case 'admin_config':
-		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			$this->setPreference('FB', Filter::postInteger('NEW_FB'));
-			Log::addConfigurationLog($this->getTitle() . ' config updated');
-		}
-		$template = new AdminTemplate;
-		return $template->pageContent();
-	  default:
-		http_response_code(404);
-		break;
+	/** {@inheritdoc} */
+	public function getAdminAction(): Response {
+		$this->layout = 'layouts/administration';
+		return $this->viewResponse('admin', [
+            'use_d_aboville'	=> $this->getPreference('FB'),
+			'title'				=> $this->getTitle()
+        ]);
 	}
+
+	/** {@inheritdoc} */
+	public function postAdminAction(Request $request): RedirectResponse	{
+		$use_d_aboville = (bool) $request->get('NEW_FB');
+		$this->setPreference('FB', $use_d_aboville);
+
+		$url = route('module', [
+            'module' => 'fancy_branches',
+            'action' => 'Admin'
+        ]);
+
+        return new RedirectResponse($url);
 	}
 
 	/**
