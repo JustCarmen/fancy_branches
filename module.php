@@ -18,13 +18,15 @@ namespace JustCarmen\WebtreesAddOns\FancyBranches;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
-use Fisharebest\Webtrees\Module\ModuleMenuInterface;
-use Fisharebest\Webtrees\Tree;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class FancyBranchesModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface {
+/* Only the backend works in 2.0
+ * For the frontend we have to wait until the branches-list has been converted to a view
+ * See app/Http/Controllers/BrancheController.php
+ */
+class FancyBranchesModule extends AbstractModule implements ModuleConfigInterface {
 	const CUSTOM_VERSION = '2.0.0-dev';
 	const CUSTOM_WEBSITE = 'http://www.justcarmen.nl/fancy-modules/fancy-branches/';
 
@@ -52,59 +54,6 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 	}
 
 	/** {@inheritdoc} */
-	public function defaultMenuOrder(): int {
-		return 999;
-	}
-
-	/** {@inheritdoc} */
-	public function getMenu(Tree $tree) {
-		// We don't actually have a menu - this is just a convenient "hook" to execute code at the right time during page execution
-		global $controller;
-
-		if (Filter::get('route') === 'branches' && Filter::get('surname') !== "") {
-			echo $this->includeCss();
-
-			$controller
-				->addExternalJavaScript($this->directory . '/assets/js/page.js')
-				->addInlineJavaScript('
-					$(".wt-main-container form")
-						.after("<div id=\"treecontrol\"><a href=\"#\">' . I18N::translate('Collapse all') . '</a> | <a href=\"#\">' . I18N::translate('Expand all') . '</a></div>")
-						.after("<div class=\"loading-image\"></div>");
-
-					$($(".wt-main-container ol").get().reverse()).each(function(){
-						var html = $(this).html();
-						if (html === "") {
-							$(this).remove();
-						}
-						else {
-							$(this).replaceWith("<ul>" + html +"</ul>")
-						}
-					});
-					$(".wt-main-container ul:first").attr("id", "branch-list");
-
-					$("li[title=\"' . I18N::translate('Private') . '\"]").hide();
-				');
-
-			if ($this->getPreference('FB')) {
-				$controller->addInlineJavaScript('
-					$("#branch-list, #branch-list ul, #branch-list li").addClass("aboville");
-				');
-			}
-
-			$controller->addInlineJavaScript('
-				$("#branch-list").treeview({
-					collapsed: true,
-					animated: "slow",
-					control:"#treecontrol"
-				});
-				$("#branch-list").show();
-				$(".loading-image").hide();
-			');
-		}
-		return null;
-	}
-
-	/** {@inheritdoc} */
 	public function getAdminAction(): Response {
 		$this->layout = 'layouts/administration';
 		return $this->viewResponse('admin', [
@@ -124,25 +73,6 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
         ]);
 
         return new RedirectResponse($url);
-	}
-
-	/**
-	 * Default Fancy script to load a module stylesheet
-	 *
-	 * The code to place the stylesheet in the header renders quicker than the default webtrees solution
-	 * because we do not have to wait until the page is fully loaded
-	 *
-	 * @return javascript
-	 */
-	protected function includeCss() {
-		return
-		'<script>' .
-		  'var newSheet=document.createElement("link"); ' .
-		  'newSheet.setAttribute("rel","stylesheet"); ' .
-		  'newSheet.setAttribute("type","text/css"); ' .
-		  'newSheet.setAttribute("href","' . $this->directory . '/assets/css/style.css"); ' .
-		  'document.getElementsByTagName("head")[0].appendChild(newSheet); ' .
-		'</script>';
 	}
 }
 
