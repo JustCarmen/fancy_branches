@@ -97,7 +97,7 @@ module.exports = function(grunt) {
           'assets/js/src/jquery.treeview.js'
         ],
         dest: 'assets/js/page.js'
-      },
+      }
     },
 
     // ========================================================================================
@@ -121,6 +121,8 @@ module.exports = function(grunt) {
     // 
     // Source: https://github.com/FriendsOfPHP/PHP-CS-Fixer    //
     // Configurator: https://mlocati.github.io/php-cs-fixer-configurator/
+	//
+	// To install php-cs-fixer globally use: composer global require friendsofphp/php-cs-fixer
     // ========================================================================================
 
     phpcsfixer: {
@@ -128,7 +130,9 @@ module.exports = function(grunt) {
           dir: ''
       },
       options: {
-          bin: '../../vendor/bin/php-cs-fixer',
+		  // use path to global composer directory
+		  cwd: '~/.composer/vendor/bin/',
+          bin: 'php-cs-fixer',
           configfile: '.php_cs',
           quiet: true
       }
