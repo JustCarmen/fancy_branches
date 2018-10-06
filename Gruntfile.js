@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
 
+  const sass = require('node-sass');
+
   // load all grunt tasks with this command. No need to set grunt.loadNpmTasks(...) for each task separately;
   require('load-grunt-tasks')(grunt);
 
@@ -43,6 +45,7 @@ module.exports = function(grunt) {
     sass: {
       dev: {
         options: {
+		  implementation: sass,
           outputStyle: 'expanded',
           sourceMap: true
 
@@ -59,6 +62,7 @@ module.exports = function(grunt) {
     postcss: {
       default: {
         options: {
+		  implementation: sass,
           map: true,
           processors: [
             require('autoprefixer')({
@@ -70,6 +74,7 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
+		  implementation: sass,
           map: true,
           processors: [
             require('cssnano')() // add minified css
