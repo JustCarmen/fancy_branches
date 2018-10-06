@@ -41,7 +41,7 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 
 	/** {@inheritdoc} */
 	public function getDescription(): string {
-		/* I18N: Description of the module */ 
+		/* I18N: Description of the module */
 		return I18N::translate('Expand or collapse branches in the webtrees branches list with a single click.');
 	}
 
@@ -57,22 +57,22 @@ class FancyBranchesModule extends AbstractModule implements ModuleConfigInterfac
 	public function getAdminAction(): Response {
 		$this->layout = 'layouts/administration';
 		return $this->viewResponse('admin', [
-            'use_d_aboville'	=> $this->getPreference('FB'),
-			'title'				=> $this->getTitle()
-        ]);
+			'use_d_aboville' => $this->getPreference('FB'),
+			'title'          => $this->getTitle()
+		]);
 	}
 
 	/** {@inheritdoc} */
-	public function postAdminAction(Request $request): RedirectResponse	{
+	public function postAdminAction(Request $request): RedirectResponse {
 		$use_d_aboville = (bool) $request->get('NEW_FB');
 		$this->setPreference('FB', $use_d_aboville);
 
 		$url = route('module', [
-            'module' => 'fancy_branches',
-            'action' => 'Admin'
-        ]);
+			'module' => 'fancy_branches',
+			'action' => 'Admin'
+		]);
 
-        return new RedirectResponse($url);
+		return new RedirectResponse($url);
 	}
 }
 

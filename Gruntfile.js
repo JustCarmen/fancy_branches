@@ -6,7 +6,7 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   // output time table
-	require('time-grunt')(grunt);
+  require('time-grunt')(grunt);
 
   // Project configuration.
   grunt.initConfig({
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
     sass: {
       dev: {
         options: {
-		  implementation: sass,
+          implementation: sass,
           outputStyle: 'expanded',
           sourceMap: true
 
@@ -62,7 +62,7 @@ module.exports = function(grunt) {
     postcss: {
       default: {
         options: {
-		  implementation: sass,
+          implementation: sass,
           map: true,
           processors: [
             require('autoprefixer')({
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-		  implementation: sass,
+          implementation: sass,
           map: true,
           processors: [
             require('cssnano')() // add minified css
@@ -118,23 +118,23 @@ module.exports = function(grunt) {
 
     // ========================================================================================
     // PHP CS FIXER
-    // 
+    //
     // Source: https://github.com/FriendsOfPHP/PHP-CS-Fixer    //
     // Configurator: https://mlocati.github.io/php-cs-fixer-configurator/
-	//
-	// To install php-cs-fixer globally use: composer global require friendsofphp/php-cs-fixer
+    //
+    // To install php-cs-fixer globally use: composer global require friendsofphp/php-cs-fixer
     // ========================================================================================
 
     phpcsfixer: {
       app: {
-          dir: ''
+        dir: ''
       },
       options: {
-		  // use path to global composer directory
-		  cwd: '~/.composer/vendor/bin/',
-          bin: 'php-cs-fixer',
-          configfile: '.php_cs',
-          quiet: true
+        // use path to global composer directory
+        cwd: '~/.composer/vendor/bin/',
+        bin: 'php-cs-fixer',
+        configfile: '.php_cs',
+        quiet: true
       }
     }
   }); // end of grunt configuration
