@@ -1,9 +1,10 @@
 Fancy Branches
 ====================
 
-Fancy Branches Module for webtrees.
+[![Latest Release](https://img.shields.io/github/release/JustCarmen/fancy_branches.svg)](https://github.com/JustCarmen/fancy_branches/releases/latest)
+[![webtrees major version](https://img.shields.io/badge/webtrees-v1.x-green)](https://webtrees.github.io/download/)
 
-This module requires [webtrees 1.7.11](https://github.com/fisharebest/webtrees). Download the latest stable release [here](https://github.com/JustCarmen/fancy_branches/releases/latest).
+Fancy Branches Module for webtrees. This is a webtrees 1 module. It cannot be used with webtrees 2.
 
 Description
 -----------
@@ -15,7 +16,7 @@ NOTE: It is not not recommended to use this add-on if you have large numbers (th
 
 Translations
 ------------
-You can help to translate this module. Updates to translations should be made at https://translate.webtrees.net/projects/justcarmen/. Changes made there will be pushed to the git repository periodically and will be available on the development version of the module. They will be included in the next release of this module.
+You can help to translate this module. Updates to translations should be made at https://poeditor.com/join/project/dVhgM18be1. Changes made there will be be included in the next release of this module.
 
 Installation & upgrading
 ---------------------------------------
