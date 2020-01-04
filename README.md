@@ -16,7 +16,7 @@ NOTE: It is not not recommended to use this add-on if you have large numbers (th
 
 Translations
 ------------
-You can help to translate this module. Updates to translations should be made at https://poeditor.com/join/project/dVhgM18be1. Changes made there will be be included in the next release of this module.
+You can help to translate this module. Updates to translations should be made at https://poeditor.com/join/project/dVhgM18be1. Changes made there will be pushed to this repository periodically and will be included in the next release of this module.
 
 Installation & upgrading
 ---------------------------------------
